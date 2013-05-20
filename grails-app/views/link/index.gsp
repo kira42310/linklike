@@ -13,7 +13,10 @@
     <li>No links</li>
   <% } else { %>
     <% for(link in links) { %>
-      <li><%= link.title %></li>
+      <li><%= link.title %> URL: <a href="http://<%= link.url %>"><%= link.url %></a> Like: <%= link.lcount %></li>
+      <g:link action="like" id="${link.id}">Like</g:link>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <g:link action="unlike" id="${link.id}">Dislike</g:link>
     <% } %> 
   <% } %>
 </ul>
