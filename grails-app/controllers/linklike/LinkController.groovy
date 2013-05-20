@@ -14,4 +14,39 @@ class LinkController {
         link.save()
         redirect(action: "index")
     }
+
+    def like()
+    {
+    	def link = Link.get(params.id)
+    	link.lcount++
+    	link.save()
+    	redirect(action: "index")
+    }
+
+    def testLike(link)
+    {
+    	link.lcount++
+    	link.save()
+    }
+
+    def unlike()
+    {
+    	def link = Link.get(params.id)
+    	if(link.lcount >0) 
+    	{
+    		link.lcount--
+    		link.save()
+    	}
+    	redirect(action: "index")
+    }
+
+
+    def testUnlike(link)
+    {
+    	if(link.lcount >0) 
+    	{
+    		link.lcount--
+    		link.save()
+    	}
+    }
 }
